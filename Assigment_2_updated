@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+class Employee {
+    double salary;
+
+    Employee(double salary) {
+        this.salary = salary;
+    }
+
+    void DisplaySalary() {
+        System.out.println("Salary: " + salary);
+    }
+}
+
+class FullTimeEmployee extends Employee {
+
+    FullTimeEmployee(double salary) {
+        super(salary);
+    }
+
+    void CalculateSalary() {
+        salary = salary + (salary * 0.50);
+    }
+}
+
+class InternEmployee extends Employee {
+
+    InternEmployee(double salary) {
+        super(salary);
+    }
+
+    void CalculateSalary() {
+        salary = salary + (salary * 0.25);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter base salary for Full Time Employee: ");
+        double fullSalary = sc.nextDouble();
+
+        System.out.print("Enter base salary for Intern Employee: ");
+        double internSalary = sc.nextDouble();
+
+        FullTimeEmployee f = new FullTimeEmployee(fullSalary);
+        InternEmployee i = new InternEmployee(internSalary);
+
+        System.out.println("\nFull Time Employee:");
+        System.out.println("Before hike:");
+        f.DisplaySalary();
+        f.CalculateSalary();
+        System.out.println("After 50% hike:");
+        f.DisplaySalary();
+
+        System.out.println("\nIntern Employee:");
+        System.out.println("Before hike:");
+        i.DisplaySalary();
+        i.CalculateSalary();
+        System.out.println("After 25% hike:");
+        i.DisplaySalary();
+
+        sc.close();
+    }
+}
